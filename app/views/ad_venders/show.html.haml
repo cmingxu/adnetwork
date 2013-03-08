@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ad_vender.name
+
+= link_to 'Edit', edit_ad_vender_path(@ad_vender)
+\|
+= link_to 'Back', ad_venders_path

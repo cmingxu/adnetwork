@@ -1,4 +1,10 @@
 Adnetwork::Application.routes.draw do
+  resources :ad_venders
+
+
+  resources :products
+
+
   root :to => "home#index"
   devise_for :users
 

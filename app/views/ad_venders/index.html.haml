@@ -1,0 +1,19 @@
+%h1 Listing ad_venders
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @ad_venders.each do |ad_vender|
+    %tr
+      %td= ad_vender.name
+      %td= link_to 'Show', ad_vender
+      %td= link_to 'Edit', edit_ad_vender_path(ad_vender)
+      %td= link_to 'Destroy', ad_vender, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ad vender', new_ad_vender_path

@@ -7,7 +7,6 @@ gem 'rails', '3.2.12'
 
 gem 'mysql2'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -19,6 +18,7 @@ end
 gem 'jquery-rails'
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 gem "devise", ">= 1.4.4"
 gem "kaminari"
