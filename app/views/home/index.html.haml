@@ -1,2 +1,26 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+!!!5
+%html
+  %head
+    %title Adnetwork
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container.top
+      %label{:class => 'icon pull-left'} AD Network
+      .login-info-box.pull-right
+        - if user_signed_in?
+          = link_to 'Logout', destroy_user_session_path, :class => 'btn', :method => 'DELETE'
+        - else
+          = form_tag new_user_session_path, :class => 'form-inline login' do
+            = text_field_tag 'user[email]', nil, :class => 'input-small', :placeholder => "Email"
+            = password_field_tag 'user[password]', nil, :class => 'input-small', :placeholder => "Password"
+            = label_tag 'remember me'
+            = check_box_tag 'remember me', :remember_me, true
+            = submit_tag 'Login', :class => 'btn'
+
+    .shining
+      .container
+        .introduction-title Adnetwork Management Tool
+        %h2{:class => "subtitle"} GCN BD TEAM PRESENT
+    .container

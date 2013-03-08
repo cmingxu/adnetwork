@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Size:
+  = @artwork.size
+%p
+  %b Product:
+  = @artwork.product
+
+= link_to 'Edit', edit_artwork_path(@artwork)
+\|
+= link_to 'Back', artworks_path
