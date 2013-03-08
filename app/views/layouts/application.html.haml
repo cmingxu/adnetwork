@@ -6,5 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    = render 'layouts/topbar'
+    #main-body.container-fluid
+      .row-fluid
+        = render 'layouts/sidebar'
+        .span12.content
+          = yield
 
-  = yield
