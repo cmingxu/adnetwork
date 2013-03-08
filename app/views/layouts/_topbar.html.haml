@@ -4,10 +4,9 @@
       = link_to "HOME", root_path, :class => 'brand'
       %ul.nav
         %li.divider-vertical
-        %li.active
-          = link_to "home", root_path
-        %li
-          = link_to "home", root_path
+        - top_bar_items.each_with_index do |item, i|
+          %li{:class => active_top_bar?(i)}
+            = link_to item[:name], item[:path]
       %ul.nav.pull-right
         %li.dropdown
           %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}

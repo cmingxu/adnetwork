@@ -1,3 +1,6 @@
 #sidebar.well
   %ul.nav.nav-list#sidebar-nav
     %li.nav-header Info Management
+    - sidebar_items.each_with_index do |item, i|
+      %li{:class => active_side_bar?(i)}
+        = link_to item[:name], item[:path]

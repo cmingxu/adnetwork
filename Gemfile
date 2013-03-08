@@ -24,6 +24,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "devise", ">= 1.4.4"
 gem "kaminari"
 gem "carrierwave"
+gem "whenever"
 gem "pry"
 
 group :test do
