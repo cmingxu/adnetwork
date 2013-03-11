@@ -1,19 +1,22 @@
-%h1 Listing ad_venders
+.titlebar
+  %h1.pull-left Listing ad_venders
+  = link_to 'New Ad vender', new_ad_vender_path, :class => 'btn btn-success pull-right new-btn'
 
-%table
+%hr
+
+%table.table.table-striped.table-bordered
   %tr
     %th Name
-    %th
-    %th
-    %th
+    %th.action
+    %th.action
+    %th.action
 
   - @ad_venders.each do |ad_vender|
     %tr
       %td= ad_vender.name
-      %td= link_to 'Show', ad_vender
-      %td= link_to 'Edit', edit_ad_vender_path(ad_vender)
-      %td= link_to 'Destroy', ad_vender, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.action= link_to 'Show', ad_vender
+      %td.action= link_to 'Edit', edit_ad_vender_path(ad_vender)
+      %td.action= link_to 'Destroy', ad_vender, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Ad vender', new_ad_vender_path

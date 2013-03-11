@@ -5,4 +5,3 @@ class AdVender < ActiveRecord::Base
   has_many :artwork_distribution
   has_many :artworks, :through => :artwork_distribution
 end
-

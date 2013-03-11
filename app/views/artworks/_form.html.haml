@@ -10,14 +10,20 @@
     = f.label :size, :class => 'control-label'
     .controls
       = f.text_field :size
+  %hr
   .field.control-group
     = f.label :product, :class => 'control-label'
     .controls
       = f.select :product_id, options_from_collection_for_select(Product.all, "id", "name")
+  %hr
   .field.control-group
     = f.label :artwork, :class => 'control-label'
     .controls
+      - if @artwork.artwork?
+        = image_tag @artwork.artwork.url
       = f.file_field :artwork
+  %hr
   .actions.control-group
     .controls
       = f.submit 'Save', :class => 'btn btn-primary'
+      = link_to 'Back', artworks_path, :class => 'btn'
