@@ -23,9 +23,11 @@
 
 :javascript
   artwork_size_list = "#{@ad_vender.artwork_size_list}";
+  type_ahead_source = #{resolution_list};
 
 :coffee
   $(document).ready ->
-    $(".tagManager").tagsManager()
-    artwork_size_list.split(',').forEach (size) ->
-      $(".tagManager").tagsManager('pushTag', size)
+    $(".tagManager").tagsManager
+      prefilled: artwork_size_list.split(',')
+      typeahead: true
+      typeaheadSource: type_ahead_source

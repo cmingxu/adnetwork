@@ -10,7 +10,9 @@
     = f.label :name, :class => 'control-label'
     .controls
       = f.text_field :name
+
+  %hr
   .actions.control-group
     .controls
       = f.submit 'Save', :class => 'btn btn-primary'
-      = link_to 'Back', artworks_path, :class => 'btn'
+      = link_to 'Back', products_path, :class => 'btn'

@@ -25,12 +25,13 @@ module ApplicationHelper
   end
 
   def active_side_bar?(index)
+    return 'active' if controller_path == 'artwork_distributions' and  controller_names[topbar_index][index] == 'ad_venders'
     return 'active' if controller_names[topbar_index][index] == controller_path
   end
 
   def controller_names
     [
-      ['products', 'ad_venders', 'artworks'],
+      ['products', 'ad_venders', 'artworks', 'artwork_distributions'],
       ['']
     ]
   end

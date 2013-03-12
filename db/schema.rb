@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308102419) do
+ActiveRecord::Schema.define(:version => 20130312075821) do
 
   create_table "ad_venders", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130308102419) do
     t.integer  "ad_vender_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "version"
   end
 
   add_index "artwork_distributions", ["ad_vender_id"], :name => "index_artwork_distributions_on_ad_vender_id"
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130308102419) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "artwork"
+    t.string   "platform"
   end
 
   add_index "artworks", ["product_id"], :name => "index_artworks_on_product_id"

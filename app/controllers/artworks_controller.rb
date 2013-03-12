@@ -56,13 +56,11 @@ class ArtworksController < ApplicationController
   # PUT /artworks/1
   # PUT /artworks/1.json
   def update
-    p "======================---------------------"
-    p params
     @artwork = Artwork.find(params[:id])
 
     respond_to do |format|
       if @artwork.update_attributes(params[:artwork])
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
+        format.html { redirect_to artworks_path, notice: 'Artwork was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

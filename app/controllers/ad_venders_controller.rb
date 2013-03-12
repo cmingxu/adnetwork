@@ -10,20 +10,12 @@ class AdVendersController < ApplicationController
     end
   end
 
-  # GET /ad_venders/1
-  # GET /ad_venders/1.json
-  def show
+  def export
     @ad_vender = AdVender.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @ad_vender }
-    end
+    send_file @ad_vender.artworks_package
   end
 
   def indexOfSize
-    p '==========================='
-    p params
     @ad_venders = AdVender.tagged_with params[:size]
 
     respond_to do |format|
@@ -58,7 +50,7 @@ class AdVendersController < ApplicationController
     respond_to do |format|
       if @ad_vender.save
         format.html { redirect_to @ad_vender, notice: 'Ad vender was successfully created.' }
-        format.json { render json: @ad_vender, status: :created, location: @ad_vender }
+        format.json { render json: ad_venders_path, status: :created, location: @ad_vender }
       else
         format.html { render action: "new" }
         format.json { render json: @ad_vender.errors, status: :unprocessable_entity }
@@ -74,7 +66,7 @@ class AdVendersController < ApplicationController
 
     respond_to do |format|
       if @ad_vender.update_attributes(params[:ad_vender])
-        format.html { redirect_to @ad_vender, notice: 'Ad vender was successfully updated.' }
+        format.html { redirect_to ad_venders_path, notice: 'Ad vender was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

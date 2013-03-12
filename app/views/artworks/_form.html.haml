@@ -46,5 +46,5 @@
     $.getJSON '/ad_venders/indexOfSize', { size: size }, (data) ->
       data.forEach (adr) ->
         checked = if ad_vender_ids.indexOf(adr.id) is -1 then null else 'checked'
-        html = "<input id='artwork[ad_vender_ids]' type='checkbox' name='artwork[ad_vender_ids][]' value='" + adr.id + "' " + checked + ">" + adr.name
+        html = "<label class='checkbox'><input id='artwork[ad_vender_ids]' type='checkbox' name='artwork[ad_vender_ids][]' value='" + adr.id + "' " + checked + ">" + adr.name + "</label>"
         $("#ad_venders").append html

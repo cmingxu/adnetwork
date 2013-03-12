@@ -228,6 +228,7 @@ DEPENDENCIES
   pry
   rails (= 3.2.12)
   rspec-rails (>= 2.6.1)
+  rubyzip
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   whenever

@@ -11,14 +11,12 @@
     %th Artwork
     %th.action
     %th.action
-    %th.action
 
   - @artworks.each do |artwork|
     %tr
       %td= artwork.size
       %td= artwork.product.name
       %td= image_tag artwork.artwork.url
-      %td.action= link_to 'Show', artwork, :class => 'btn'
       %td.action= link_to 'Edit', edit_artwork_path(artwork), :class => 'btn btn-primary'
       %td.action= link_to 'Destroy', artwork, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
 

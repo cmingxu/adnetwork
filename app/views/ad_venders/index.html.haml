@@ -7,6 +7,8 @@
 %table.table.table-striped.table-bordered
   %tr
     %th Name
+    %th Required Sizes
+    %th.action
     %th.action
     %th.action
     %th.action
@@ -14,9 +16,8 @@
   - @ad_venders.each do |ad_vender|
     %tr
       %td= ad_vender.name
-      %td.action= link_to 'Show', ad_vender
+      %td= ad_vender.artwork_size_list
+      %td.action= link_to 'Artworks', ad_vender_artwork_distributions_path(ad_vender)
+      %td.action= link_to 'Export', export_ad_vender_path(ad_vender)
       %td.action= link_to 'Edit', edit_ad_vender_path(ad_vender)
       %td.action= link_to 'Destroy', ad_vender, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-

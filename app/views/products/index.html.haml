@@ -9,12 +9,10 @@
     %th Name
     %th.action
     %th.action
-    %th.action
 
   - @products.each do |product|
     %tr
       %td= product.name
-      %td.action= link_to 'Show', product, :class => 'btn'
       %td.action= link_to 'Edit', edit_product_path(product), :class => 'btn btn-primary'
       %td.action= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
 

@@ -26,6 +26,7 @@ gem "kaminari"
 gem "carrierwave"
 gem "whenever"
 gem "pry"
+gem "rubyzip"
 
 group :test do
   gem "database_cleaner", ">= 0.6.7"
