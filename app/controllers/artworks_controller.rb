@@ -44,7 +44,7 @@ class ArtworksController < ApplicationController
 
     respond_to do |format|
       if @artwork.save
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
+        format.html { redirect_to artworks_path, notice: 'Artwork was successfully created.' }
         format.json { render json: @artwork, status: :created, location: @artwork }
       else
         format.html { render action: "new" }
@@ -56,6 +56,8 @@ class ArtworksController < ApplicationController
   # PUT /artworks/1
   # PUT /artworks/1.json
   def update
+    p "======================---------------------"
+    p params
     @artwork = Artwork.find(params[:id])
 
     respond_to do |format|

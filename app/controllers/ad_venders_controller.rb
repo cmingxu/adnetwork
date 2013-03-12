@@ -21,6 +21,18 @@ class AdVendersController < ApplicationController
     end
   end
 
+  def indexOfSize
+    p '==========================='
+    p params
+    @ad_venders = AdVender.tagged_with params[:size]
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @ad_venders }
+    end
+
+  end
+
   # GET /ad_venders/new
   # GET /ad_venders/new.json
   def new
@@ -40,6 +52,7 @@ class AdVendersController < ApplicationController
   # POST /ad_venders
   # POST /ad_venders.json
   def create
+    params[:ad_vender][:artwork_size_list] = params['hidden-ad_vender'][:artwork_size_list]
     @ad_vender = AdVender.new(params[:ad_vender])
 
     respond_to do |format|
@@ -57,6 +70,7 @@ class AdVendersController < ApplicationController
   # PUT /ad_venders/1.json
   def update
     @ad_vender = AdVender.find(params[:id])
+    params[:ad_vender][:artwork_size_list] = params['hidden-ad_vender'][:artwork_size_list]
 
     respond_to do |format|
       if @ad_vender.update_attributes(params[:ad_vender])

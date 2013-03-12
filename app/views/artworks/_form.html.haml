@@ -9,7 +9,11 @@
   .field.control-group
     = f.label :size, :class => 'control-label'
     .controls
-      = f.text_field :size
+      = f.select :size, options_for_select(resolution_list.map { |re| [re, re] }, @artwork.size)
+  %hr
+  .field.control-group
+    = f.label :ad_venders, :class => 'control-label'
+    .controls#ad_venders
   %hr
   .field.control-group
     = f.label :product, :class => 'control-label'
@@ -27,3 +31,20 @@
     .controls
       = f.submit 'Save', :class => 'btn btn-primary'
       = link_to 'Back', artworks_path, :class => 'btn'
+
+:javascript
+  ad_vender_ids = "#{@artwork.ad_vender_ids}"
+
+:coffee
+  $(document).ready ->
+    fetchAdVenders($('#artwork_size').val())
+    $('#artwork_size').change (e) ->
+      $("#ad_venders").html ''
+      fetchAdVenders(e.target.value)
+
+  fetchAdVenders = (size) ->
+    $.getJSON '/ad_venders/indexOfSize', { size: size }, (data) ->
+      data.forEach (adr) ->
+        checked = if ad_vender_ids.indexOf(adr.id) is -1 then null else 'checked'
+        html = "<input id='artwork[ad_vender_ids]' type='checkbox' name='artwork[ad_vender_ids][]' value='" + adr.id + "' " + checked + ">" + adr.name
+        $("#ad_venders").append html

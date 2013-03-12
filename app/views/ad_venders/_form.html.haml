@@ -11,7 +11,21 @@
     .controls
       = f.text_field :name
   %hr
+  .field.control-group
+    = f.label :artwork_size_list, :class => 'control-label'
+    .controls
+      = f.text_field :artwork_size_list, :class => 'tagManager'
+  %hr
   .actions.control-group
     .controls
       = f.submit 'Save', :class => 'btn btn-primary'
-      = link_to 'Back', artworks_path, :class => 'btn'
+      = link_to 'Back', ad_venders_path, :class => 'btn'
+
+:javascript
+  artwork_size_list = "#{@ad_vender.artwork_size_list}";
+
+:coffee
+  $(document).ready ->
+    $(".tagManager").tagsManager()
+    artwork_size_list.split(',').forEach (size) ->
+      $(".tagManager").tagsManager('pushTag', size)
