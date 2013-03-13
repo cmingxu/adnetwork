@@ -1,15 +1,14 @@
 = form_for @artwork, :html => { :class => 'form-horizontal', :multipart => true } do |f|
-  - if @artwork.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@artwork.errors.count, "error")} prohibited this artwork from being saved:"
-      %ul
-        - @artwork.errors.full_messages.each do |msg|
-          %li= msg
-
+  = render :partial => 'layouts/error', :object => @artwork
   .field.control-group
     = f.label :size, :class => 'control-label'
     .controls
       = f.select :size, options_for_select(resolution_list.map { |re| [re, re] }, @artwork.size)
+  %hr
+  .field.control-group
+    = f.label :platform, :class => 'control-label'
+    .controls
+      = f.select :platform, options_for_select([['Android', 'android'], ['iOS', 'ios']], @artwork.platform)
   %hr
   .field.control-group
     = f.label :ad_venders, :class => 'control-label'
@@ -25,6 +24,7 @@
     .controls
       - if @artwork.artwork?
         = image_tag @artwork.artwork.url
+        %br
       = f.file_field :artwork
   %hr
   .actions.control-group

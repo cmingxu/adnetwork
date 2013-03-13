@@ -1,2 +1,36 @@
-%h1 ArtworkDistributions#edit
-%p Find me in app/views/artwork_distributions/edit.html.haml
+.titlebar
+  %h1.pull-left Editing Artwork Distributions
+
+%hr
+= form_for [@ad_vender, @ad], :html => { :class => 'form-horizontal' } do |f|
+  = render :partial => 'layouts/error', :object => @ad
+  .field.control-group
+    = f.label :ad_venders, :class => 'control-label'
+    .controls#ad_venders
+      = label_tag :ad_vender_name, @ad_vender.name
+  %hr
+  .field.control-group
+    = f.label :product, :class => 'control-label'
+    .controls
+      = label_tag :product_name, @ad.artwork.product.name
+  %hr
+  .field.control-group
+    = f.label :platform, :class => 'control-label'
+    .controls
+      = label_tag :artwork_platform, @ad.artwork.platform
+  %hr
+  .field.control-group
+    = f.label :artwork, :class => 'control-label'
+    .controls
+      - if @ad.artwork.artwork?
+        = image_tag @ad.artwork.artwork.url
+  %hr
+  .field.control-group
+    = f.label :version, :class => 'control-label'
+    .controls
+      = f.text_field :version
+  %hr
+  .actions.control-group
+    .controls
+      = f.submit 'Save', :class => 'btn btn-primary'
+      = link_to 'Back', ad_vender_artwork_distributions_path(@ad_vender), :class => 'btn'

@@ -3,7 +3,9 @@
   = link_to 'New Ad vender', new_ad_vender_path, :class => 'btn btn-success pull-right new-btn'
 
 %hr
-
+- if flash[:notice]
+  #error_explanation.alert.alert-error
+    = flash[:notice]
 %table.table.table-striped.table-bordered
   %tr
     %th Name
@@ -18,6 +20,31 @@
       %td= ad_vender.name
       %td= ad_vender.artwork_size_list
       %td.action= link_to 'Artworks', ad_vender_artwork_distributions_path(ad_vender)
-      %td.action= link_to 'Export', export_ad_vender_path(ad_vender)
+      %td.action= link_to 'Export', "#modal-#{ad_vender.id}", {'data-toggle' => 'modal'}
       %td.action= link_to 'Edit', edit_ad_vender_path(ad_vender)
       %td.action= link_to 'Destroy', ad_vender, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+- @ad_venders.each do |ad_vender|
+  .modal.hide.fade{ :id => "modal-#{ad_vender.id}" , :tabindex => "-1", :role => "dialog", 'aria-labelledby' => "modalLabel", 'aria-hidden' => "true"}
+    .modal-header
+      %button.close{:type => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} ×
+      %h3#modalLabel Choose Target
+    .modal-body
+      = form_tag export_ad_vender_path(ad_vender), :method => 'GET', :class => 'form-horizontal' do
+        .field.control-group
+          = label_tag :platform, 'Platform', :class => 'control-label'
+          .controls
+            = select_tag :platform, options_for_select([['Android', 'android'], ['iOS', 'ios']], 'ios')
+        %hr
+        .field.control-group
+          = label_tag :product, 'Product', :class => 'control-label'
+          .controls
+            = select_tag :product_id, options_from_collection_for_select(Product.all, "id", "name")
+
+
+    .modal-footer
+      %button.btn{'data-dismiss' => "modal", 'aria-hidden' => "true"} Close
+      %button.btn.btn-primary{:id => "submit-btn-#{ad_vender.id}"} Export
+
+    :coffee
+      $("#submit-btn-#{ad_vender.id}").click -> $("#modal-#{ad_vender.id} form").submit()

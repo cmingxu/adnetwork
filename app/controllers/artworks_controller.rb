@@ -47,7 +47,7 @@ class ArtworksController < ApplicationController
         format.html { redirect_to artworks_path, notice: 'Artwork was successfully created.' }
         format.json { render json: @artwork, status: :created, location: @artwork }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @artwork.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class ArtworksController < ApplicationController
         format.html { redirect_to artworks_path, notice: 'Artwork was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @artwork.errors, status: :unprocessable_entity }
       end
     end

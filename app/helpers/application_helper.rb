@@ -43,6 +43,6 @@ module ApplicationHelper
   end
 
   def resolution_list
-    ["800x600", "1024x768", "300x400"]
+    ["800x600", "1024x768", "300x400", "390x200"]
   end
 end

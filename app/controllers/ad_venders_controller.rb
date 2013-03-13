@@ -12,7 +12,13 @@ class AdVendersController < ApplicationController
 
   def export
     @ad_vender = AdVender.find(params[:id])
-    send_file @ad_vender.artworks_package
+    package_path = @ad_vender.artworks_package(params[:platform], params[:product_id])
+    if package_path
+      send_file package_path
+    else
+      flash[:notice] = 'No avaliable Artworks'
+      redirect_to :back
+    end
   end
 
   def indexOfSize
@@ -49,8 +55,8 @@ class AdVendersController < ApplicationController
 
     respond_to do |format|
       if @ad_vender.save
-        format.html { redirect_to @ad_vender, notice: 'Ad vender was successfully created.' }
-        format.json { render json: ad_venders_path, status: :created, location: @ad_vender }
+        format.html { redirect_to ad_venders_path, notice: 'Ad vender was successfully created.' }
+        format.json { render json: @ad_vender, status: :created, location: @ad_vender }
       else
         format.html { render action: "new" }
         format.json { render json: @ad_vender.errors, status: :unprocessable_entity }

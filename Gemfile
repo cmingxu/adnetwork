@@ -15,6 +15,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'jquery-rails'
 gem "haml", ">= 3.1.2"
@@ -24,6 +30,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "devise", ">= 1.4.4"
 gem "kaminari"
 gem "carrierwave"
+gem "mini_magick"
 gem "whenever"
 gem "pry"
 gem "rubyzip"
