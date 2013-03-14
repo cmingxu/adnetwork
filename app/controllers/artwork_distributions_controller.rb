@@ -3,7 +3,7 @@ class ArtworkDistributionsController < ApplicationController
   before_filter :find_ad, :except => [:index]
 
   def index
-    @artwork_distributions = @ad_vender.artwork_distributions
+    @artwork_distributions = @ad_vender.artwork_distributions.page params[:page]
     render :index
   end
 

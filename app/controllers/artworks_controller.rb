@@ -2,7 +2,7 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-    @artworks = Artwork.all
+    @artworks = Artwork.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

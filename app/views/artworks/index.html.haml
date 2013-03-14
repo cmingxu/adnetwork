@@ -4,6 +4,8 @@
 
 %hr
 
+= paginate @artworks
+
 %table.table.table-striped.table-bordered
   %tr
     %th Size
@@ -22,4 +24,5 @@
       %td.action= link_to 'Edit', edit_artwork_path(artwork), :class => 'btn btn-primary'
       %td.action= link_to 'Destroy', artwork, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
 
-%br
+
+= paginate @artworks

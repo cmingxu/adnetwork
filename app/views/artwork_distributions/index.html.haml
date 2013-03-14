@@ -2,6 +2,8 @@
   %h1.pull-left Listing Artworks of #{@ad_vender.name}
 %hr
 
+= paginate @artwork_distributions
+
 %table.table.table-striped.table-bordered
   %tr
     %th Resolution
@@ -19,3 +21,5 @@
       %td= ad.version
       %td.action= link_to 'Edit', edit_ad_vender_artwork_distribution_path(@ad_vender, ad)
       %td.action= link_to 'Destroy', [@ad_vender, ad], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= paginate @artwork_distributions
