@@ -22,10 +22,10 @@
   .field.control-group
     = f.label :artwork, :class => 'control-label'
     .controls
-      - if @artwork.artwork?
-        = image_tag @artwork.artwork.url
-        %br
-      = f.file_field :artwork
+      - style = @artwork.artwork? ? '' : 'display:none'
+      = image_tag @artwork.artwork.url, :id => 'img_field', :style => style
+      %br
+      = f.file_field :artwork, :class => 'file-uploader'
   %hr
   .actions.control-group
     .controls

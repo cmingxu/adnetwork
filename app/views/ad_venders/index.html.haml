@@ -3,8 +3,11 @@
   = link_to 'New Ad vender', new_ad_vender_path, :class => 'btn btn-success pull-right new-btn'
 
 %hr
-- if flash[:notice]
+- if flash[:alert]
   #error_explanation.alert.alert-error
+    = flash[:alert]
+- if flash[:notice]
+  #error_explanation.alert.alert-success
     = flash[:notice]
 %table.table.table-striped.table-bordered
   %tr

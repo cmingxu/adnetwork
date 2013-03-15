@@ -16,8 +16,7 @@ class AdVendersController < ApplicationController
     if package_path
       send_file package_path
     else
-      flash[:notice] = 'No avaliable Artworks'
-      redirect_to :back
+      redirect_to :back, :alert => 'No avaliable Artworks'
     end
   end
 
