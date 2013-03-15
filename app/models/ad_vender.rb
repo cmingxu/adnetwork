@@ -7,6 +7,8 @@ class AdVender < ActiveRecord::Base
   has_many :artwork_distributions, :dependent => :destroy
   has_many :artworks, :through => :artwork_distributions
 
+  validates_uniqueness_of :name
+
   def artworks_package(platform, product_id)
     latest_ad    = ArtworkDistribution.artworks_for(self.id, platform, product_id).first
     return false unless latest_ad
