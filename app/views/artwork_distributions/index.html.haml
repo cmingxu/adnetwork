@@ -16,7 +16,7 @@
   - @artwork_distributions.each do |ad|
     %tr
       %td= ad.artwork.size
-      %td= image_tag ad.artwork.artwork.url
+      %td= image_tag ad.artwork.artwork.url if ad.artwork.artwork?
       %td= ad.artwork.platform
       %td= ad.version
       %td.action= link_to 'Edit', edit_ad_vender_artwork_distribution_path(@ad_vender, ad)
