@@ -5,6 +5,8 @@ apple_icon.png: apple_icon-14f4c51c4c7b6026ecc81f3e99a23fba.png
 apple_icon/index.png: apple_icon-14f4c51c4c7b6026ecc81f3e99a23fba.png
 curve.png: curve-e6f8389650660a42766f6e16c4418b0f.png
 curve/index.png: curve-e6f8389650660a42766f6e16c4418b0f.png
+empty.png: empty-5c5363835c3e5bed6b301e4bea95dde5.png
+empty/index.png: empty-5c5363835c3e5bed6b301e4bea95dde5.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 application.js: application-92f749adfb1811b14a909be53e763e52.js
