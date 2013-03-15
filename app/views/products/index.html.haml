@@ -1,5 +1,5 @@
 .titlebar
-  %h1.pull-left Listing products
+  %h1.pull-left Listing Products
   = link_to 'New Product', new_product_path, :class => 'btn btn-success pull-right new-btn'
 
 %hr
@@ -13,8 +13,8 @@
   - @products.each do |product|
     %tr
       %td= product.name
-      %td.action= link_to 'Edit', edit_product_path(product), :class => 'btn btn-primary'
-      %td.action= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+      %td.action= link_to 'Edit', edit_product_path(product)
+      %td.action= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

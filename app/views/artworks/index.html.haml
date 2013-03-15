@@ -21,7 +21,7 @@
       %td= artwork.product.name
       %td= image_tag artwork.artwork.url if artwork.artwork?
       %td= artwork.platform
-      %td.action= link_to 'Edit', edit_artwork_path(artwork), :class => 'btn btn-primary'
-      %td.action= link_to 'Destroy', artwork, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+      %td.action= link_to 'Edit', edit_artwork_path(artwork)
+      %td.action= link_to 'Destroy', artwork, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = paginate @artworks
