@@ -5,7 +5,8 @@ module ApplicationHelper
       [
         {:path => products_path, :name => 'Products'},
         {:path => ad_venders_path, :name => 'Ad Venders'},
-        {:path => artworks_path, :name => 'Artworks'}
+        {:path => artworks_path, :name => 'Artworks'},
+        {:path => resolutions_path, :name => 'Resolutions'}
       ],
       [
       ]
@@ -31,7 +32,7 @@ module ApplicationHelper
 
   def controller_names
     [
-      ['products', 'ad_venders', 'artworks', 'artwork_distributions'],
+      ['products', 'ad_venders', 'artworks', 'resolutions', 'artwork_distributions'],
       ['']
     ]
   end
@@ -43,6 +44,6 @@ module ApplicationHelper
   end
 
   def resolution_list
-    ["800x600", "1024x768", "300x400", "390x200"]
+    Resolution.all.map(&:resolution)
   end
 end

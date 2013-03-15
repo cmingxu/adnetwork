@@ -1,0 +1,19 @@
+.titlebar
+  %h1.pull-left Listing Resolutions
+  = link_to 'New Product', new_resolution_path, :class => 'btn btn-success pull-right new-btn'
+
+%hr
+
+%table.table.table-striped.table-bordered
+  %tr
+    %th Resolution
+    %th.action
+    %th.action
+
+  - @resolutions.each do |resolution|
+    %tr
+      %td= resolution.resolution
+      %td.action= link_to 'Edit', edit_resolution_path(resolution)
+      %td.action= link_to 'Destroy', resolution, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

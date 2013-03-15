@@ -14,7 +14,7 @@ class Artwork < ActiveRecord::Base
     image = MiniMagick::Image.open(artwork.current_path)
     width, height = size.split("x")
     unless image[:width] == width.to_i && image[:height] == height.to_i
-      errors.add :image, "should be #{size}px minimum!"
+      errors.add :image, "should be #{size}px minimum"
     end
   end
 end

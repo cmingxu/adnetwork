@@ -1,0 +1,11 @@
+= form_for @resolution, :html => { :class => 'form-horizontal' } do |f|
+  = render :partial => 'layouts/error', :object => @resolution
+  .field.control-group
+    = f.label :resolution, :class => 'control-label'
+    .controls
+      = f.text_field :resolution
+  %hr
+  .actions.control-group
+    .controls
+      = f.submit 'Save', :class => 'btn btn-primary'
+      = link_to 'Back', artworks_path, :class => 'btn'

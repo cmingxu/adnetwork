@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Resolution:
+  = @resolution.resolution
+
+= link_to 'Edit', edit_resolution_path(@resolution)
+\|
+= link_to 'Back', resolutions_path

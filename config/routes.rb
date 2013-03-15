@@ -1,4 +1,7 @@
 Adnetwork::Application.routes.draw do
+  resources :resolutions
+
+
   resources :artworks
 
   resources :products
