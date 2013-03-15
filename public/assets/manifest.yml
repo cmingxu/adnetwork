@@ -9,6 +9,8 @@ rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 application.js: application-92f749adfb1811b14a909be53e763e52.js
 application/index.js: application-92f749adfb1811b14a909be53e763e52.js
+artworks.js: artworks-d37b87a7556f5585a8e13b9d8beda329.js
+artworks/index.js: artworks-d37b87a7556f5585a8e13b9d8beda329.js
 application.css: application-2bc2887a0dcc770292fded3f8356cfe7.css
 application/index.css: application-2bc2887a0dcc770292fded3f8356cfe7.css
 devise.css: devise-a82ae3166d248d46f1fad269f654f869.css
