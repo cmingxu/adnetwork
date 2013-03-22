@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @vender_feedback.product
+%p
+  %b Ad vender:
+  = @vender_feedback.ad_vender
+%p
+  %b Platform:
+  = @vender_feedback.platform
+%p
+  %b Chart:
+  = @vender_feedback.chart
+
+= link_to 'Edit', edit_vender_feedback_path(@vender_feedback)
+\|
+= link_to 'Back', vender_feedbacks_path

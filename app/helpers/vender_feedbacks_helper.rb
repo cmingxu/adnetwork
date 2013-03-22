@@ -1,0 +1,2 @@
+module VenderFeedbacksHelper
+end

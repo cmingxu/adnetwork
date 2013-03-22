@@ -6,6 +6,7 @@ class AdVender < ActiveRecord::Base
 
   has_many :artwork_distributions, :dependent => :destroy
   has_many :artworks, :through => :artwork_distributions
+  has_many :analytic_data
 
   validates_uniqueness_of :name
 

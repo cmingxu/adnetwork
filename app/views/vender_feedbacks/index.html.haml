@@ -1,0 +1,25 @@
+%h1 Listing vender_feedbacks
+
+%table
+  %tr
+    %th Product
+    %th Ad vender
+    %th Platform
+    %th Chart
+    %th
+    %th
+    %th
+
+  - @vender_feedbacks.each do |vender_feedback|
+    %tr
+      %td= vender_feedback.product
+      %td= vender_feedback.ad_vender
+      %td= vender_feedback.platform
+      %td= vender_feedback.chart
+      %td= link_to 'Show', vender_feedback
+      %td= link_to 'Edit', edit_vender_feedback_path(vender_feedback)
+      %td= link_to 'Destroy', vender_feedback, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Vender feedback', new_vender_feedback_path

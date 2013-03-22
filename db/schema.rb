@@ -11,13 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315063929) do
+ActiveRecord::Schema.define(:version => 20130321080359) do
 
   create_table "ad_venders", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "analytic_data", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "ad_vender_id"
+    t.string   "country_code"
+    t.string   "platform"
+    t.datetime "report_date"
+    t.integer  "impression"
+    t.integer  "click"
+    t.integer  "install"
+    t.integer  "cost"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "vender_feedback_id"
+    t.integer  "artwork_id"
+  end
+
+  add_index "analytic_data", ["ad_vender_id"], :name => "index_analytic_data_on_ad_vender_id"
+  add_index "analytic_data", ["artwork_id"], :name => "index_analytic_data_on_artwork_id"
+  add_index "analytic_data", ["click"], :name => "index_analytic_data_on_click"
+  add_index "analytic_data", ["cost"], :name => "index_analytic_data_on_cost"
+  add_index "analytic_data", ["country_code"], :name => "index_analytic_data_on_country_code"
+  add_index "analytic_data", ["install"], :name => "index_analytic_data_on_install"
+  add_index "analytic_data", ["platform"], :name => "index_analytic_data_on_platform"
+  add_index "analytic_data", ["product_id"], :name => "index_analytic_data_on_product_id"
 
   create_table "artwork_distributions", :force => true do |t|
     t.integer  "artwork_id"
@@ -87,5 +112,17 @@ ActiveRecord::Schema.define(:version => 20130315063929) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vender_feedbacks", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "ad_vender_id"
+    t.string   "platform"
+    t.string   "chart"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "vender_feedbacks", ["ad_vender_id"], :name => "index_vender_feedbacks_on_ad_vender_id"
+  add_index "vender_feedbacks", ["product_id"], :name => "index_vender_feedbacks_on_product_id"
 
 end

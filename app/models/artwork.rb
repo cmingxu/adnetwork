@@ -4,6 +4,7 @@ class Artwork < ActiveRecord::Base
 
   has_many :artwork_distribution, :dependent => :destroy
   has_many :ad_venders, :through => :artwork_distribution
+  has_many :analytic_data
 
   mount_uploader :artwork, ArtworkUploader
 

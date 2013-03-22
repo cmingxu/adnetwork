@@ -1,0 +1,22 @@
+= form_for @vender_feedback do |f|
+  - if @vender_feedback.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@vender_feedback.errors.count, "error")} prohibited this vender_feedback from being saved:"
+      %ul
+        - @vender_feedback.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :product
+    = f.text_field :product
+  .field
+    = f.label :ad_vender
+    = f.text_field :ad_vender
+  .field
+    = f.label :platform
+    = f.text_field :platform
+  .field
+    = f.label :chart
+    = f.text_field :chart
+  .actions
+    = f.submit 'Save'

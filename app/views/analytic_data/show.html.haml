@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @analytic_datum.product
+%p
+  %b Ad vender:
+  = @analytic_datum.ad_vender
+%p
+  %b Name:
+  = @analytic_datum.name
+%p
+  %b Chart:
+  = @analytic_datum.chart
+
+= link_to 'Edit', edit_analytic_datum_path(@analytic_datum)
+\|
+= link_to 'Back', analytic_data_path

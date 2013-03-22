@@ -1,16 +1,14 @@
 Adnetwork::Application.routes.draw do
-  resources :resolutions
-
-
-  resources :artworks
-
-  resources :products
-
   resources :ad_venders do
     resources :artwork_distributions
     collection { get :indexOfSize }
     member { get :export }
   end
+  resources :vender_feedbacks, :except => [:edit, :update]
+  resources :analytic_data, :only => :index
+  resources :resolutions
+  resources :artworks
+  resources :products
 
   root :to => "home#index"
   devise_for :users

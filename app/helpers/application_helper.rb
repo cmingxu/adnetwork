@@ -9,6 +9,7 @@ module ApplicationHelper
         {:path => resolutions_path, :name => 'Resolutions'}
       ],
       [
+        {:path => analytic_data_path, :name => 'Vender Datas' }
       ]
     ]
     items[topbar_index]
@@ -17,7 +18,7 @@ module ApplicationHelper
   def top_bar_items
     [
       {:path => products_path, :name => 'Ad Network'},
-      {:path => "#", :name => 'Analytics'}
+      {:path => analytic_data_path, :name => 'Analytics'}
     ]
   end
 
@@ -33,7 +34,7 @@ module ApplicationHelper
   def controller_names
     [
       ['products', 'ad_venders', 'artworks', 'resolutions', 'artwork_distributions'],
-      ['']
+      ['analytic_data']
     ]
   end
 

@@ -1,0 +1,114 @@
+!!!5
+%html
+  %head
+    %title Adnetwork
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = render 'layouts/topbar'
+    #main-body.container-fluid
+      .row-fluid
+
+        = paginate @analytic_data, :query => @query_params, :order => @order_params
+
+        %table.table-bordered.table.tablesorter-bootstrap
+          %thead
+            %tr
+              %th#artwork_id.tablesorter-header{:style => 'width:180px'}
+                .tablesort-wrapper
+                  .tablesort-inner
+                    ArtworkID
+                    = order_icon(:artwork_id)
+              %th#ad_vender_id.tablesorter-header{:style => 'width:80px'}
+                .tablesort-wrapper
+                  .tablesort-inner
+                    AdVender
+                    = order_icon(:ad_vender_id)
+              %th#country_code.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Country
+                    = order_icon(:country_code)
+              %th#platform.tablesorter-header{:style => 'width:80px'}
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Platform
+                    = order_icon(:platform)
+              %th#report_date.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    ReportDate
+                    = order_icon(:report_date)
+              %th#impression.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Impression
+                    = order_icon(:impression)
+              %th#click.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Click
+                    = order_icon(:click)
+              %th#install.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Install
+                    = order_icon(:install)
+              %th#cost.tablesorter-header
+                .tablesort-wrapper
+                  .tablesort-inner
+                    Cost
+                    = order_icon(:cost)
+            %tr.tablesorter-filter-row
+              %td
+                = text_field_tag :artwork_id, @query_params[:artwork_id], :class => 'tablesorter-filter'
+              %td
+                = select_tag :ad_vender_id, options_from_collection_for_select(AdVender.all, "id", "name", @query_params[:ad_vender_id]), :include_blank => true, :class => 'tablesorter-filter'
+              %td
+                = text_field_tag :country_code, @query_params[:country_code], :class => 'tablesorter-filter'
+              %td
+                = select_tag :platform, options_for_select([['Android', 'android'], ['iOS', 'ios']], @query_params[:platform]), :include_blank => true, :class => 'tablesorter-filter'
+              %td
+                = text_field_tag :report_date, @query_params[:report_date], :class => 'tablesorter-filter'
+              %td
+                = text_field_tag :impression, @query_params[:impression], :class => 'tablesorter-filter'
+              %td
+                = text_field_tag :click, @query_params[:click], :class => 'tablesorter-filter'
+              %td
+                = text_field_tag :install, @query_params[:install], :class => 'tablesorter-filter'
+              %td{:style => 'position:relative'}
+                = text_field_tag :cost, @query_params[:cost], :class => 'tablesorter-filter'
+                = button_tag 'Query', :id => 'query-btn', :class => 'btn btn-primary', :style => 'position:absolute;top:4px;right:-75px;'
+
+          - @analytic_data.each do |analytic_datum|
+            %tr
+              %td
+                - if analytic_datum.artwork and analytic_datum.artwork.artwork?
+                  = image_tag analytic_datum.artwork.artwork.url
+                  %br
+                = analytic_datum.artwork_id
+              %td= analytic_datum.ad_vender.name
+              %td= analytic_datum.country_code
+              %td= analytic_datum.platform
+              %td= analytic_datum.report_date.strftime("%Y%m%d")
+              %td= analytic_datum.impression
+              %td= analytic_datum.click
+              %td= analytic_datum.install
+              %td= analytic_datum.cost
+        %br
+
+:javascript
+  query_params = #{@query_params.to_json.html_safe};
+  order_params = #{@order_params.to_json.html_safe};
+
+:coffee
+  $(document).ready ->
+    $("#query-btn").click ->
+      params = []
+      $('input, select').each -> params.push("query[" + $(this).attr('id').toString() + "]=" + $(this).val().toString()) if $(this).val()
+      params = if params.length > 0 then "?"+params.join('&').toString() else ''
+      window.location.href = encodeURI("analytic_data"+params)
+
+    $("th").click (e) ->
+      console.log $(e.currentTarget).attr('id')
