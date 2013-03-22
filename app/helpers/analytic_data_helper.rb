@@ -1,6 +1,6 @@
 module AnalyticDataHelper
   def order_icon(attr)
-    return unless attr == @order_params[:attr]
+    return unless attr.to_s == @order_params[:attr]
     if @order_params[:direction] == 'ASC'
       engine = Haml::Engine.new("%i.icon-chevron-up")
     else

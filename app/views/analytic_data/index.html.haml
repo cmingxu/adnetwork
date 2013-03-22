@@ -98,17 +98,29 @@
               %td= analytic_datum.cost
         %br
 
-:javascript
-  query_params = #{@query_params.to_json.html_safe};
-  order_params = #{@order_params.to_json.html_safe};
-
 :coffee
+  query_params = #{@query_params.to_json.html_safe}
+  order_params = #{@order_params.to_json.html_safe}
+
   $(document).ready ->
     $("#query-btn").click ->
-      params = []
-      $('input, select').each -> params.push("query[" + $(this).attr('id').toString() + "]=" + $(this).val().toString()) if $(this).val()
-      params = if params.length > 0 then "?"+params.join('&').toString() else ''
-      window.location.href = encodeURI("analytic_data"+params)
+      query_params = {}
+      $('input, select').each -> query_params[$(this).attr('id')] = $(this).val() if $(this).val()
+      window.location.href = encodeURI("analytic_data" + gen_query_string(query_params, order_params))
 
     $("th").click (e) ->
-      console.log $(e.currentTarget).attr('id')
+      attr = $(e.currentTarget).attr('id')
+      if attr is order_params.attr
+        direction = if order_params.direction is 'ASC' then 'DESC' else 'ASC'
+      else
+        direction = 'DESC'
+      order_params = { attr, direction }
+      window.location.href = encodeURI("analytic_data" + gen_query_string(query_params, order_params))
+
+  gen_query_string = (query_params, order_params) ->
+    order_string = "?order[attr]=" + order_params.attr + "&order[direction]=" + order_params.direction
+    params = []
+    for k, v of query_params
+      params.push "query[" + k + "]=" + v
+    params = if params.length > 0 then "&"+params.join('&').toString() else ''
+    order_string + params
