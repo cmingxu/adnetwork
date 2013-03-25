@@ -20,6 +20,11 @@
                   .tablesort-inner
                     ArtworkID
                     = order_icon(:artwork_id)
+              %th#product_id.tablesorter-header{:style => 'width:80px'}
+                .tablesort-wrapper
+                  .tablesort-inner
+                    ProductID
+                    = order_icon(:product_id)
               %th#ad_vender_id.tablesorter-header{:style => 'width:80px'}
                 .tablesort-wrapper
                   .tablesort-inner
@@ -64,6 +69,8 @@
               %td
                 = text_field_tag :artwork_id, @query_params[:artwork_id], :class => 'tablesorter-filter'
               %td
+                = select_tag :product_id, options_from_collection_for_select(Product.all, "id", "name", @query_params[:product_id]), :include_blank => true, :class => 'tablesorter-filter'
+              %td
                 = select_tag :ad_vender_id, options_from_collection_for_select(AdVender.all, "id", "name", @query_params[:ad_vender_id]), :include_blank => true, :class => 'tablesorter-filter'
               %td
                 = text_field_tag :country_code, @query_params[:country_code], :class => 'tablesorter-filter'
@@ -88,6 +95,7 @@
                   = image_tag analytic_datum.artwork.artwork.url
                   %br
                 = analytic_datum.artwork_id
+              %td= analytic_datum.product.name
               %td= analytic_datum.ad_vender.name
               %td= analytic_datum.country_code
               %td= analytic_datum.platform

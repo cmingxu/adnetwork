@@ -18,17 +18,27 @@ class AnalyticDatum < ActiveRecord::Base
       v.gsub! /\s/, ''
       case v
       when /^(\d+)-(\d+)$/
-        scoped_query = scoped_query.in_range_of(k, $1, $2)
+        scoped_query = scoped_query.in_range_of(k, value($1, k), value($1, k))
       when /^<(\w+)$/
-        scoped_query = scoped_query.less_than(k, $1)
+        uppper = $1
+        scoped_query = scoped_query.less_than(k, value($1, k))
       when /^>(\w+)$/
-        scoped_query = scoped_query.greater_than(k, $1)
+        scoped_query = scoped_query.greater_than(k, value($1,k))
       when /^\w+(\|\w+)*$/
-        scoped_query = scoped_query.matched_values(k, v.split('|'))
+        scoped_query = scoped_query.matched_values(k, value(v.split('|'), k))
       end
     end
 
     scoped_query.order("#{order_params[:attr]} #{order_params[:direction]}")
+  end
+
+  def self.value(target, k)
+    return target unless k == 'report_date'
+    if target.kind_of?(Array)
+      target.map { |t| Time.new(t[0..3], t[4..5], t[6..7]) }
+    else
+      Time.new(target[0..3], target[4..5], target[6..7])
+    end
   end
 
   def self.import_vender_feedback(vender_feedback)

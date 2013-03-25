@@ -7,6 +7,15 @@
         - top_bar_items.each_with_index do |item, i|
           %li{:class => active_top_bar?(i)}
             = link_to item[:name], item[:path]
+      %ul.nav
+        %li.dropdown
+          %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}
+            Analytics
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to analytic_data_path
+
       %ul.nav.pull-right
         %li.dropdown
           %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}
