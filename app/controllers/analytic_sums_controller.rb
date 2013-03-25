@@ -4,7 +4,7 @@ class AnalyticSumsController < ApplicationController
 
   def index
     @query_params = params[:query] || {}
-    @order_params = params[:order] || {}
+    @order_params = params[:order] || {:attr => :impression, :direction => 'DESC'}
 
     @analytic_sums = AnalyticSum.query(@query_params, @order_params).page params[:page]
 

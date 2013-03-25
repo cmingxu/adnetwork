@@ -8,13 +8,13 @@
           %li{:class => active_top_bar?(i)}
             = link_to item[:name], item[:path]
       %ul.nav
-        %li.dropdown
+        %li.dropdown{:class => active_top_bar?(1)}
           %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown'}
             Analytics
             %b.caret
           %ul.dropdown-menu
             %li
-              = link_to analytic_data_path
+              = link_to 'Summary', analytic_sums_path
 
       %ul.nav.pull-right
         %li.dropdown

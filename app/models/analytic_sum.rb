@@ -1,7 +1,7 @@
 class AnalyticSum < ActiveRecord::Base
   attr_accessible :click, :cost, :country_code,
     :cpc, :cpi, :ctr, :cvr, :impression,
-    :install, :install, :platform
+    :install, :platform
 
   belongs_to :product
   belongs_to :ad_vender

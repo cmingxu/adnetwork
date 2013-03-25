@@ -14,7 +14,7 @@
   .field.control-group
     = f.label :artwork_size_list, :class => 'control-label'
     .controls
-      = f.text_field :artwork_size_list, :class => 'tagManager'
+      = f.text_field :artwork_size_list, :autocomplete => "off", :class => 'tagManager'
   %hr
   .actions.control-group
     .controls
