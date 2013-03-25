@@ -5,7 +5,9 @@ Adnetwork::Application.routes.draw do
     member { get :export }
   end
   resources :vender_feedbacks, :except => [:edit, :update]
-  resources :analytic_data, :only => :index
+  resources :analytic_sums, :only => :index do
+    resources :analytic_data, :only => :index
+  end
   resources :resolutions
   resources :artworks
   resources :products

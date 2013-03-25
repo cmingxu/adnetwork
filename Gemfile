@@ -21,8 +21,10 @@ group :development do
   gem 'meta_request'
 end
 
+gem "highcharts-rails"
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'jquery-rails'
+
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem 'acts-as-taggable-on', '~> 2.3.1'
@@ -34,6 +36,7 @@ gem "mini_magick"
 gem "whenever"
 gem "pry"
 gem "rubyzip"
+gem "roo"
 
 group :test do
   gem "database_cleaner", ">= 0.6.7"

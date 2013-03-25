@@ -106,6 +106,8 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    highcharts-rails (2.3.5)
+      railties (>= 3.1)
     hike (1.2.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -167,6 +169,10 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    roo (1.11.1)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -182,6 +188,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-ole (1.2.11.6)
     rubyzip (0.9.9)
     sass (3.2.6)
     sass-rails (3.2.6)
@@ -194,6 +201,8 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     slop (3.4.3)
+    spreadsheet (0.8.3)
+      ruby-ole (>= 1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -237,6 +246,7 @@ DEPENDENCIES
   guard-rspec
   haml (>= 3.1.2)
   haml-rails (>= 0.3.4)
+  highcharts-rails
   jquery-rails
   kaminari
   launchy (>= 2.0.5)
@@ -245,6 +255,7 @@ DEPENDENCIES
   mysql2
   pry
   rails (= 3.2.12)
+  roo
   rspec-rails (>= 2.6.1)
   rubyzip
   sass-rails (~> 3.2.3)

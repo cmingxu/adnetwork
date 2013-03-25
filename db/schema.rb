@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321080359) do
+ActiveRecord::Schema.define(:version => 20130325081650) do
 
   create_table "ad_venders", :force => true do |t|
     t.string   "name"
@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(:version => 20130321080359) do
     t.datetime "updated_at",         :null => false
     t.integer  "vender_feedback_id"
     t.integer  "artwork_id"
+    t.integer  "analytic_sum_id"
   end
 
   add_index "analytic_data", ["ad_vender_id"], :name => "index_analytic_data_on_ad_vender_id"
+  add_index "analytic_data", ["analytic_sum_id"], :name => "index_analytic_data_on_analytic_sum_id"
   add_index "analytic_data", ["artwork_id"], :name => "index_analytic_data_on_artwork_id"
   add_index "analytic_data", ["click"], :name => "index_analytic_data_on_click"
   add_index "analytic_data", ["cost"], :name => "index_analytic_data_on_cost"
@@ -43,6 +45,28 @@ ActiveRecord::Schema.define(:version => 20130321080359) do
   add_index "analytic_data", ["install"], :name => "index_analytic_data_on_install"
   add_index "analytic_data", ["platform"], :name => "index_analytic_data_on_platform"
   add_index "analytic_data", ["product_id"], :name => "index_analytic_data_on_product_id"
+
+  create_table "analytic_sums", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "ad_vender_id"
+    t.string   "country_code"
+    t.string   "platform"
+    t.integer  "impression"
+    t.integer  "click"
+    t.integer  "install"
+    t.integer  "cost"
+    t.integer  "artwork_id"
+    t.float    "cpi"
+    t.float    "cpc"
+    t.float    "ctr"
+    t.float    "cvr"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "analytic_sums", ["ad_vender_id"], :name => "index_analytic_sums_on_ad_vender_id"
+  add_index "analytic_sums", ["artwork_id"], :name => "index_analytic_sums_on_artwork_id"
+  add_index "analytic_sums", ["product_id"], :name => "index_analytic_sums_on_product_id"
 
   create_table "artwork_distributions", :force => true do |t|
     t.integer  "artwork_id"
