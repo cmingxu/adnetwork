@@ -1,0 +1,25 @@
+gdn:
+  index:
+    product_name: 0
+    artwork_id: 1
+    country_code: 2
+    platform: 3
+    ad_vender_name: 4
+    report_date: 5
+    impression: 6
+    click: 7
+    install: 8
+    cost: 10
+  titles:
+    - 'title'
+    - 'bannerID'
+    - 'countryCode'
+    - 'os'
+    - 'media'
+    - 'date'
+    - 'impression'
+    - 'click'
+    - 'install'
+    - 'currencyCode'
+    - 'Cost (USD)'
+    - 'Menu'

@@ -30,7 +30,7 @@ module ApplicationHelper
   def controller_names
     [
       ['products', 'ad_venders', 'artworks', 'resolutions', 'artwork_distributions'],
-      ['analytic_sums']
+      ['analytic_sums', 'vender_feedbacks']
     ]
   end
 

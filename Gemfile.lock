@@ -238,6 +238,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.0.1)
   capybara (>= 1.1.0)
   carrierwave
+  chronic
   coffee-rails (~> 3.2.1)
   cucumber-rails (>= 1.0.2)
   database_cleaner (>= 0.6.7)

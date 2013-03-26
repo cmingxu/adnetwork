@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325081650) do
+ActiveRecord::Schema.define(:version => 20130326070630) do
 
   create_table "ad_venders", :force => true do |t|
     t.string   "name"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130325081650) do
     t.integer  "impression"
     t.integer  "click"
     t.integer  "install"
-    t.integer  "cost"
+    t.float    "cost"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "vender_feedback_id"
@@ -39,11 +39,6 @@ ActiveRecord::Schema.define(:version => 20130325081650) do
   add_index "analytic_data", ["ad_vender_id"], :name => "index_analytic_data_on_ad_vender_id"
   add_index "analytic_data", ["analytic_sum_id"], :name => "index_analytic_data_on_analytic_sum_id"
   add_index "analytic_data", ["artwork_id"], :name => "index_analytic_data_on_artwork_id"
-  add_index "analytic_data", ["click"], :name => "index_analytic_data_on_click"
-  add_index "analytic_data", ["cost"], :name => "index_analytic_data_on_cost"
-  add_index "analytic_data", ["country_code"], :name => "index_analytic_data_on_country_code"
-  add_index "analytic_data", ["install"], :name => "index_analytic_data_on_install"
-  add_index "analytic_data", ["platform"], :name => "index_analytic_data_on_platform"
   add_index "analytic_data", ["product_id"], :name => "index_analytic_data_on_product_id"
 
   create_table "analytic_sums", :force => true do |t|
@@ -54,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130325081650) do
     t.integer  "impression"
     t.integer  "click"
     t.integer  "install"
-    t.integer  "cost"
+    t.float    "cost"
     t.integer  "artwork_id"
     t.float    "cpi"
     t.float    "cpc"
@@ -66,6 +61,15 @@ ActiveRecord::Schema.define(:version => 20130325081650) do
 
   add_index "analytic_sums", ["ad_vender_id"], :name => "index_analytic_sums_on_ad_vender_id"
   add_index "analytic_sums", ["artwork_id"], :name => "index_analytic_sums_on_artwork_id"
+  add_index "analytic_sums", ["click"], :name => "index_analytic_sums_on_click"
+  add_index "analytic_sums", ["cost"], :name => "index_analytic_sums_on_cost"
+  add_index "analytic_sums", ["cpc"], :name => "index_analytic_sums_on_cpc"
+  add_index "analytic_sums", ["cpi"], :name => "index_analytic_sums_on_cpi"
+  add_index "analytic_sums", ["ctr"], :name => "index_analytic_sums_on_ctr"
+  add_index "analytic_sums", ["cvr"], :name => "index_analytic_sums_on_cvr"
+  add_index "analytic_sums", ["impression"], :name => "index_analytic_sums_on_impression"
+  add_index "analytic_sums", ["install"], :name => "index_analytic_sums_on_install"
+  add_index "analytic_sums", ["platform"], :name => "index_analytic_sums_on_platform"
   add_index "analytic_sums", ["product_id"], :name => "index_analytic_sums_on_product_id"
 
   create_table "artwork_distributions", :force => true do |t|

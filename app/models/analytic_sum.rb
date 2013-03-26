@@ -15,6 +15,16 @@ class AnalyticSum < ActiveRecord::Base
 
   default_scope includes([:product, :artwork, :ad_vender])
 
+  after_initialize :default_values
+
+  private
+  def default_values
+    self.impression ||= 0
+    self.click      ||= 0
+    self.install    ||= 0
+    self.cost       ||= 0.0
+  end
+
   def self.query(query_params, order_params)
     scoped_query = self.scoped
 
@@ -34,5 +44,4 @@ class AnalyticSum < ActiveRecord::Base
 
     scoped_query.order("#{order_params[:attr]} #{order_params[:direction]}")
   end
-
 end

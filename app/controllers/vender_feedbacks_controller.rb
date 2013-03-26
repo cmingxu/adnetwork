@@ -1,4 +1,5 @@
 class VenderFeedbacksController < ApplicationController
+  layout :false
   # GET /vender_feedbacks
   # GET /vender_feedbacks.json
   def index
